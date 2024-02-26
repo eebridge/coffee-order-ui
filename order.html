@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Coffee Order System</title>
+    </head>
+
+    <body style="background-color: #f8eaca;">
+        <p style="text-align: left;">
+            <a style="margin-left: 20px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 36px; text-decoration: none; color: #ce6d46; text-align: left;" href="index.html">Coffee Order System</a>
+            <span style="float: right; margin-right: 3cm;">
+                <a style="margin-right: 20px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 36px; text-decoration: none; color: #000000;" href="order.html">Order Status</a>
+            </span>
+        </p>
+        
+        <div style="text-align: center; margin-top: 7cm;">
+            <p style="font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 36px; text-decoration: none; color: #000000;" href="order.html">
+                Order Placed:
+            </p>
+            <p id="id" style="font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 36px; text-decoration: none; color: #000000;" href="order.html">
+                Order id:
+            </p>
+            <p id="condiments" style="font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 36px; text-decoration: none; color: #000000;" href="order.html">
+                
+            </p>
+            <p id="total" style="font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 36px; text-decoration: none; color: #000000;" href="order.html">
+                Total:
+            </p>
+        </div>
+
+        <script>
+            const urlParams = new URLSearchParams(window.location.search);
+            const beverage = urlParams.get('beverage');
+            const condiments = urlParams.get('condiments');
+            document.getElementById('condiments').textContent = beverage + " with " + condiments;
+            document.getElementById('id').textContent = "Order id: " + Math.floor(Math.random() * 100000);
+            document.getElementById('total').textContent = "Total: $" + (Math.random() * 10).toFixed(2);
+        </script>
+    </body>
+</html>

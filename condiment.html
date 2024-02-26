@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Coffee Order System</title>
+    </head>
+
+    <body style="background-color: #f8eaca;">
+        <p style="text-align: left;">
+            <a style="margin-left: 20px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 36px; text-decoration: none; color: #ce6d46; text-align: left;" href="index.html">Coffee Order System</a>
+            <span style="float: right; margin-right: 3cm;">
+                <a style="margin-right: 20px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 36px; text-decoration: none; color: #000000;" href="order.html">Order Status</a>
+            </span>
+        </p>
+        
+        <div style="text-align: center; margin-top: 3cm;">
+            <a style="font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 36px; text-decoration: none; color: #000000;">Add the condiments</a>
+
+            <div style="margin-top: 3cm;">
+                <button onclick="setCondiment('milk')" style="background-color: gray; border: none; color: black; padding: 20px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 36px; margin: 8px 3px; transition-duration: 0.4s; cursor: pointer; margin-right: 3cm;">Milk</button>
+                <button onclick="setCondiment('mocha')" style="background-color: gray; border: none; color: black; padding: 20px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 36px; margin: 8px 3px; transition-duration: 0.4s; cursor: pointer;">Mocha</button>
+            </div>
+            <div style="margin-top: 3cm;">
+                <button onclick="setCondiment('soy')" style="background-color: gray; border: none; color: black; padding: 20px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 36px; margin: 8px 3px; transition-duration: 0.4s; cursor: pointer; margin-right: 3cm;">Soy</button>
+                <button onclick="setCondiment('whip')" style="background-color: gray; border: none; color: black; padding: 20px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 36px; margin: 8px 3px; transition-duration: 0.4s; cursor: pointer;">Whip</button>
+            </div>
+
+            <div style="margin-top: 4cm;">
+                <a style="margin-right: 4cm; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 36px; text-decoration: none; color: #ce6d46; text-align: left;">My Order</a>
+                <button id="bev" onclick="removeBeverage()" style="background-color: gray; border: none; color: black; padding: 2px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 36px; margin: 8px 3px; transition-duration: 0.4s; cursor: pointer;">Selected Beverage</button>
+                <button onclick="removeCondiment('milk')" style="background-color: gray; border: none; color: black; padding: 2px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 36px; margin: 8px 3px; transition-duration: 0.4s; cursor: pointer;">Milk</button>
+                <button onclick="removeCondiment('mocha')" style="background-color: gray; border: none; color: black; padding: 2px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 36px; margin: 8px 3px; transition-duration: 0.4s; cursor: pointer;">Mocha</button>
+                <button onclick="removeCondiment('soy')" style="background-color: gray; border: none; color: black; padding: 2px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 36px; margin: 8px 3px; transition-duration: 0.4s; cursor: pointer;">Soy</button>
+                <button onclick="removeCondiment('whip')" style="background-color: gray; border: none; color: black; padding: 2px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 36px; margin: 8px 3px; transition-duration: 0.4s; cursor: pointer;">Whip</button>
+            </div>
+            <div style="margin-top: 1cm;">
+                <button onclick="confirmOrder()" style="background-color: gray; border: none; color: black; padding: 2px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 36px; margin: 8px 3px; transition-duration: 0.4s; cursor: pointer;">Confirm Order</button>
+            </div>
+        </div>
+
+        <script>
+            const urlParams = new URLSearchParams(window.location.search);
+            const beverage = urlParams.get('beverage');
+            document.getElementById('bev').textContent = beverage;
+
+            let condiments = [];
+
+            function setCondiment(condiment) {
+                if (condiments.indexOf(condiment) == -1) {
+                    condiments.push(condiment);
+                }
+            }
+
+            function removeCondiment(condiment) {
+                condiments.splice(condiments.indexOf(condiment), 1)
+            }
+
+            function removeBeverage() {
+                location.href = "beverage.html";
+            }
+
+            function confirmOrder() {
+                location.href = "order.html?beverage=" + beverage + "&condiments=" + condiments;
+            }
+        </script>
+
+    </body>
+</html>
